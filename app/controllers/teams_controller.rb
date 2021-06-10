@@ -17,7 +17,6 @@ class TeamsController < ApplicationController
   end
 
   def edit
-
   end
 
   def create
@@ -61,9 +60,7 @@ class TeamsController < ApplicationController
   end
 
   def edit_only_owner
-     unless @team.is_owner?(current_user)
-       redirect_to @team, notice: I18n.t('views.messages.cannot_edit_non_leaders')
-     end
+    redirect_to @team, notice: I18n.t('views.messages.cannot_edit_non_leaders') unless @team.owner?(current_user)
   end
 
 end

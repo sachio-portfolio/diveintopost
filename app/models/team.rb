@@ -16,7 +16,7 @@ class Team < ApplicationRecord
     assigns.create(user: user)
   end
 
-  def is_owner?(user)
+  def owner?(user)
     return self.owner_id == user.id
   end
 
