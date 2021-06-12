@@ -12,4 +12,10 @@ class AssignMailer < ApplicationMailer
     @team = team
     mail to: @email, subject: I18n.t('views.messages.delegated_owner')
   end
+
+  def delete_agenda_mail(agenda)
+    @email = agenda.team.members.map(&:email)
+    @agenda = agenda
+    mail to: @email, subject: I18n.t('views.messages.delete_agenda')
+  end
 end
